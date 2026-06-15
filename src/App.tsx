@@ -148,7 +148,7 @@ export default function App() {
     // On top, we overlay beautiful glowing radial circles using softer, extremely polished white and green gradients.
     const gradientCircles = "radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.24) 0%, transparent 50%), radial-gradient(circle at 85% 30%, rgba(50, 232, 117, 0.42) 0%, transparent 65%), radial-gradient(circle at 20% 70%, rgba(5, 70, 26, 0.38) 0%, transparent 60%), radial-gradient(circle at 80% 85%, rgba(255, 255, 255, 0.18) 0%, transparent 50%), linear-gradient(to bottom, #32e875 0%, #05461a 95vh, #02200a 100%)";
     
-    if (selectedDetailedHeritageId || activeView === "heritage" || activeView === "travel") {
+    if (selectedDetailedHeritageId || activeView === "heritage" || activeView === "travel" || activeView === "downloadables") {
       return "#ffffff";
     }
     switch (activeView) {
@@ -159,7 +159,7 @@ export default function App() {
       case "tagbeats":
         return "#ffffff";
       case "downloadables":
-        return "radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.22) 0%, transparent 55%), radial-gradient(circle at 75% 30%, rgba(50, 232, 117, 0.38) 0%, transparent 65%), radial-gradient(circle at 30% 70%, rgba(5, 70, 26, 0.35) 0%, transparent 60%), radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.15) 0%, transparent 50%), linear-gradient(to bottom, #32e875 0%, #05461a 95vh, #02200a 100%)";
+        return "#ffffff";
       case "barangay":
         return "#ffffff";
       case "saulog":
@@ -185,7 +185,7 @@ export default function App() {
 
   return (
     <div 
-      className={`min-h-screen transition-all duration-500 font-sans overflow-x-hidden relative ${(selectedDetailedHeritageId || activeView === "heritage" || activeView === "travel" || activeView === "barangay" || activeView === "saulog" || activeView === "tagbeats") ? "text-[#05461a] bg-white animate-fade-in" : "text-white"}`} 
+      className={`min-h-screen transition-all duration-500 font-sans overflow-x-hidden relative ${(selectedDetailedHeritageId || activeView === "heritage" || activeView === "travel" || activeView === "barangay" || activeView === "saulog" || activeView === "tagbeats" || activeView === "downloadables") ? "text-[#05461a] bg-white animate-fade-in" : "text-white"}`} 
       style={{ background: getBackgroundStyle() }}
       id="digital-tourism-root"
     >
@@ -201,13 +201,7 @@ export default function App() {
         )}
 
 
-        {activeView === "downloadables" && !selectedDetailedHeritageId && (
-          <>
-            <div className="absolute top-[-5%] left-[-10%] w-[650px] h-[650px] rounded-full blur-[80px] animate-float-1 will-change-transform translate-z-0 pointer-events-none" style={{ background: "rgba(50, 232, 117, 0.24)" }} />
-            <div className="absolute bottom-[20%] right-[-5%] w-[600px] h-[600px] rounded-full blur-[80px] animate-float-2 will-change-transform translate-z-0 pointer-events-none" style={{ background: "rgba(5, 70, 26, 0.32)" }} />
-            <div className="absolute top-[40%] left-[20%] w-[500px] h-[500px] rounded-full blur-[70px] animate-float-1 will-change-transform translate-z-0 pointer-events-none" style={{ background: "rgba(20, 150, 50, 0.18)" }} />
-          </>
-        )}
+
         {activeView === "about" && !selectedDetailedHeritageId && (
           <>
             <div className="absolute top-[-5%] left-[-10%] w-[650px] h-[650px] rounded-full blur-[80px] animate-float-1 will-change-transform translate-z-0 pointer-events-none" style={{ background: "rgba(20, 121, 23, 0.22)" }} />
@@ -436,7 +430,7 @@ export default function App() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="pt-16 pb-20 w-full flex flex-col items-center"
+            className="pb-20 w-full flex flex-col items-center"
           >
             {/* DUAL INFINITE MARQUEE CAROUSEL SHOWCASE */}
             <HeritageMarquee onCardClick={(id) => {

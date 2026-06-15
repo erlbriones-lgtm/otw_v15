@@ -112,12 +112,12 @@ export default function Navbar({ activeView, setActiveView, onPlanVisit }: Navba
                   src={logoUrl} 
                   alt="Tagbilaran Official Seal" 
                   onError={() => setLogoFailed(true)}
-                  className="w-8 h-8 sm:w-8.5 sm:h-8.5 object-contain drop-shadow-md transition-transform duration-300 group-hover:scale-110" 
+                  className="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-md transition-transform duration-300 group-hover:scale-110" 
                   referrerPolicy="no-referrer"
                 />
               ) : (
-                <div className="w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-lg bg-white/10 flex items-center justify-center border border-white/25 text-[#FFD54F] group-hover:scale-110 transition-transform duration-300 shadow-sm">
-                  <Compass className="w-4 h-4 sm:w-4.5 sm:h-4.5 animate-[spin_10s_linear_infinite]" />
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/10 flex items-center justify-center border border-white/25 text-[#FFD54F] group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                  <Compass className="w-4 h-4 sm:w-5 sm:h-5 animate-[spin_10s_linear_infinite]" />
                 </div>
               )}
             </div>
@@ -190,12 +190,12 @@ export default function Navbar({ activeView, setActiveView, onPlanVisit }: Navba
                   src={logoUrl} 
                   alt="Tagbilaran Official Seal" 
                   onError={() => setLogoFailed(true)}
-                  className="w-7 sm:w-7.5 h-7 sm:h-7.5 object-contain drop-shadow-md" 
+                  className="w-7 sm:w-8 h-7 sm:h-8 object-contain drop-shadow-md" 
                   referrerPolicy="no-referrer"
                 />
               ) : (
-                <div className="w-7 sm:w-7.5 h-7 sm:h-7.5 rounded-lg bg-white/10 flex items-center justify-center border border-white/25 text-[#FFD54F]">
-                  <Compass className="w-3.5 h-3.5 animate-[spin_10s_linear_infinite]" />
+                <div className="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-white/10 flex items-center justify-center border border-white/25 text-[#FFD54F]">
+                  <Compass className="w-4 h-4 animate-[spin_10s_linear_infinite]" />
                 </div>
               )}
             </div>
@@ -203,11 +203,11 @@ export default function Navbar({ activeView, setActiveView, onPlanVisit }: Navba
             {/* Mobile Burger Toggle UI */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="flex items-center justify-center p-1 sm:p-1.5 rounded-lg text-white hover:text-[#FFD54F] hover:bg-white/10 active:scale-95 transition-all cursor-pointer h-7.5 w-7.5 sm:h-8 sm:w-8 border border-white/10"
+              className="flex items-center justify-center p-1 sm:p-1.5 rounded-lg text-white hover:text-[#FFD54F] hover:bg-white/10 active:scale-95 transition-all cursor-pointer h-8 w-8 border border-white/10"
               aria-label="Toggle Navigation Menu"
               id="nav-mobile-toggle"
             >
-              {isOpen ? <X className="w-4.5 h-4.5 sm:w-5 sm:h-5 animate-pulse" /> : <Menu className="w-4.5 h-4.5 sm:w-5 sm:h-5" />}
+              {isOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse" /> : <Menu className="w-4 h-4 sm:w-5 sm:h-5" />}
             </button>
           </div>
 

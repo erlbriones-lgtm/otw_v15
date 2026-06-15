@@ -108,20 +108,20 @@ export default function Downloadables() {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-6 sm:px-12 pt-32 pb-24 text-center flex flex-col items-center justify-center text-white" id="downloadables-page">
+    <div className="w-full max-w-7xl mx-auto px-6 sm:px-12 pt-32 pb-24 text-center flex flex-col items-center justify-center text-[#05461a]" id="downloadables-page">
       {/* Visual Header Banner aligned elegantly */}
       <div className="max-w-3xl mb-12 mx-auto text-center flex flex-col items-center justify-center" id="downloadables-header">
         
-        <h1 className="font-sans font-black text-white text-3xl sm:text-5xl tracking-tight leading-none mb-4 text-center">
-          <span className="inline-block text-[#FFD54F] pr-2 text-accent-yellow em">Downloads</span>
+        <h1 className="font-sans text-3xl sm:text-5xl font-black tracking-widest text-[#006400] uppercase mb-4 text-center">
+          Downloads
         </h1>
-        <p className="text-white text-sm sm:text-base leading-relaxed font-sans font-medium text-center">
+        <p className="text-[#006400]/90 text-sm sm:text-base leading-relaxed font-sans font-semibold text-center">
           Equip yourself with official pamphlets, walking coordinates, cultural heritage portfolios, and offline guides carefully prepared for high-fidelity cultural excursions in Tagbilaran.
         </p>
       </div>
 
       {/* Layout Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6" id="download-cards-grid">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 w-full" id="download-cards-grid">
         <AnimatePresence mode="popLayout">
           {filteredItems.map((item, idx) => {
             const isDownloading = downloadingId === item.id;
@@ -135,39 +135,39 @@ export default function Downloadables() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className="bg-[rgba(0,0,0,0.25)] backdrop-blur-md rounded-3xl p-6 border border-[rgba(255,255,255,0.15)] hover:border-white/30 transition-all flex flex-col justify-between h-[255px] group relative overflow-hidden text-left shadow-lg glass-panel-custom"
+                className="bg-emerald-50/15 hover:bg-white rounded-3xl p-6 border border-emerald-100 hover:border-emerald-300 transition-all flex flex-col justify-between h-[255px] group relative overflow-hidden text-left shadow-sm hover:shadow-md"
               >
                 {/* Visual back glow on group hovering */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-transparent to-white/0 group-hover:from-white/5 group-hover:to-white/10 pointer-events-none transition-all duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 via-transparent to-emerald-500/0 group-hover:from-emerald-500/5 group-hover:to-emerald-500/10 pointer-events-none transition-all duration-500" />
                 
                 <div>
                   {/* Category Pill removed as requested, leaving only file info justified cleanly */}
                   <div className="flex justify-end items-center mb-4">
-                    <span className="font-mono text-[10px] text-white/50 bg-white/5 px-2.5 py-0.5 rounded border border-white/5">
+                    <span className="font-mono text-[10px] text-[#006400]/80 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-100/60 font-bold uppercase">
                       {item.fileType} • {item.fileSize}
                     </span>
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="text-white font-sans font-black text-base sm:text-lg tracking-tight group-hover:text-[#FFD54F] transition-colors leading-tight">
+                  <h3 className="text-[#05461a] font-sans font-black text-base sm:text-lg tracking-tight group-hover:text-[#006400] transition-colors leading-tight">
                     {item.title}
                   </h3>
-                  <p className="text-white text-xs mt-2.5 line-clamp-3 leading-relaxed font-sans font-medium">
+                  <p className="text-stone-500 text-xs mt-2.5 line-clamp-3 leading-relaxed font-sans font-medium">
                     {item.description}
                   </p>
                 </div>
 
                 {/* Card Action footer bar */}
-                <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-end">
+                <div className="mt-4 pt-4 border-t border-emerald-100 flex items-center justify-end">
                   <button
                     onClick={() => handleDownload(item)}
                     disabled={isDownloading}
                     className={`px-3.5 py-2 rounded-xl text-[10px] font-mono font-extrabold uppercase tracking-widest transition-all duration-300 flex items-center gap-1.5 cursor-pointer border ${
                       isSuccess
-                        ? "bg-emerald-500 hover:bg-emerald-600 border-emerald-500 text-white"
+                        ? "bg-emerald-600 hover:bg-emerald-700 border-emerald-600 text-white"
                         : isDownloading
-                        ? "bg-white/20 text-white border-white/15 cursor-wait"
-                        : "bg-white text-[#05461a] border-white shadow-md font-black hover:bg-white/95 btn-primary-custom"
+                        ? "bg-emerald-50 text-emerald-800 border-emerald-100 cursor-wait"
+                        : "bg-[#05461a] text-white border-[#05461a] shadow-sm font-black hover:bg-emerald-800"
                     }`}
                   >
                     {isSuccess ? (
@@ -180,7 +180,7 @@ export default function Downloadables() {
                         <motion.div
                           animate={{ rotate: 360 }}
                           transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-                          className="w-3 h-3 border border-stone-850 border-t-transparent rounded-full"
+                          className="w-3 h-3 border border-emerald-800 border-t-transparent rounded-full"
                         />
                         SAVING
                       </>
@@ -199,9 +199,9 @@ export default function Downloadables() {
 
         {filteredItems.length === 0 && (
           <div className="col-span-1 md:col-span-2 lg:col-span-3 py-16 text-center" id="empty-downloads">
-            <Sparkles className="w-8 h-8 text-[#FFD54F] mx-auto opacity-40 animate-pulse mb-3" />
-            <h3 className="text-white font-sans font-bold text-base">No Matching Resources</h3>
-            <p className="text-[#FFD54F] text-xs mt-1.5">Please check your search filters or try a different term.</p>
+            <Sparkles className="w-8 h-8 text-emerald-600 mx-auto opacity-40 animate-pulse mb-3" />
+            <h3 className="text-[#05461a] font-sans font-bold text-base">No Matching Resources</h3>
+            <p className="text-emerald-800/80 text-xs mt-1.5">Please check your search filters or try a different term.</p>
           </div>
         )}
       </div>

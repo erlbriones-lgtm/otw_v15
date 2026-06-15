@@ -219,9 +219,6 @@ export default function HeritageDetailView({ heritage, onBack }: HeritageDetailV
               )}
             </div>
           </div>
-
-
-
         </div>
 
       </div>

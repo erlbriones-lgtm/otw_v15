@@ -141,109 +141,133 @@ export default function HeritageMarquee({ onCardClick }: HeritageMarqueeProps) {
   return (
     <section 
       id="infinite-heritage-marquee" 
-      className="w-full pt-4 pb-16 bg-transparent text-[#05461a] overflow-hidden flex flex-col gap-12"
+      className="w-full pt-28 pb-20 relative text-[#05461a] overflow-hidden flex flex-col gap-12 bg-white"
     >
-      {/* Header Info */}
-      <div className="text-center px-6 max-w-4xl mx-auto flex flex-col items-center select-none">
-        <h3 className="font-sans font-bold text-5xl sm:text-6xl md:text-7xl uppercase tracking-tighter leading-none text-[#05461a] mb-4 text-center">
-          Explore Our Heritage
-        </h3>
-        <p className="text-[#05461a] text-sm sm:text-base leading-relaxed font-sans font-normal max-w-xl text-center">
-          Discover Tagbilaran's living history, ancient stone chapels, and colonial treasures. <span className="text-[#2E7D32] hover:underline cursor-pointer font-bold">Click any card below</span> to unlock high-definition archives, local chronicles, and traveler planning resources.
-        </p>
-      </div>
+      {/* Background Image Container with Vertical Rotation (Up to Down) at 70% Opacity */}
+      <div 
+        className="absolute inset-0 bg-cover pointer-events-none opacity-70" 
+        style={{ 
+          backgroundImage: "url('/webp/lemoonboots-scrapbook-1287354.webp')",
+          backgroundPosition: "center 70%",
+          transform: "scaleY(-1)"
+        }}
+      />
 
-      {/* Marquee Wrapper with Pause On Hover capability */}
-      <div className="w-full flex flex-col gap-6 select-none relative hover-pause" id="marquee-rows-container">
-        
-        {/* Row 1: Scrolling Left */}
-        <div className="w-full overflow-hidden relative py-2" id="marquee-row-1-wrapper">
-
-          <div className="flex w-max flex-nowrap gap-6 animate-marquee-left" id="marquee-row-1">
-            {/* Duplicated once for seamless endless scroll */}
-            {[...row1Cards, ...row1Cards].map((card, idx) => (
-              <div 
-                key={`row1-${idx}`}
-                onClick={() => onCardClick?.(card.id)}
-                className="w-[280px] sm:w-[320px] shrink-0 bg-white rounded-3xl overflow-hidden border border-emerald-100 hover:border-[#05461a]/40 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-[1.01] cursor-pointer flex flex-col text-left group"
-              >
-                {/* Image slot */}
-                <div className="h-[180px] sm:h-[196px] w-full overflow-hidden relative">
-                  <img 
-                    src={card.image} 
-                    alt={card.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    referrerPolicy="no-referrer"
-                    loading="lazy"
-                  />
-                  <div className="absolute top-3 left-3 bg-[#05461a] text-white border border-white/10 backdrop-blur-sm px-3 py-1 rounded-md text-[9px] font-sans font-black tracking-widest uppercase shadow-sm">
-                    {card.district}
-                  </div>
-                </div>
-
-                {/* Content area */}
-                <div className="p-6 flex-1 flex flex-col justify-between text-[#05461a]">
-                  <div>
-                    <span className="text-[10px] sm:text-[11px] font-sans font-black tracking-widest text-[#2E7D32]/70 uppercase block mb-1.5">
-                      {card.category}
-                    </span>
-                    <h4 className="font-sans font-black text-lg text-[#05461a] group-hover:text-[#2E7D32] transition-colors leading-snug">
-                       {card.title}
-                    </h4>
-                    <p className="text-[#2E7D32]/80 text-xs sm:text-sm leading-relaxed mt-2.5 line-clamp-3 font-medium font-sans">
-                      {card.desc}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+      <div className="relative z-10 w-full flex flex-col gap-12">
+        {/* Header Info */}
+        <div className="text-center px-6 max-w-4xl mx-auto flex flex-col items-center select-none">
+          <h3 className="font-sans font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase tracking-normal leading-none text-[#05461a] mb-4 text-center">
+            Explore Our Heritage
+          </h3>
+          <p className="text-[#05461a] text-sm sm:text-base leading-relaxed font-comic font-medium max-w-xl text-center">
+            Discover Tagbilaran's living history, ancient stone chapels, and colonial treasures. <span className="text-[#2E7D32] hover:underline cursor-pointer font-bold">Click any card below</span> to unlock high-definition archives, local chronicles, and traveler planning resources.
+          </p>
         </div>
 
-        {/* Row 2: Scrolling Right */}
-        <div className="w-full overflow-hidden relative py-2" id="marquee-row-2-wrapper">
+        {/* Marquee Wrapper with Pause On Hover capability */}
+        <div className="w-full flex flex-col gap-6 select-none relative hover-pause" id="marquee-rows-container">
+          
+          {/* Row 1: Scrolling Left */}
+          <div className="w-full overflow-hidden relative py-2" id="marquee-row-1-wrapper">
 
-          <div className="flex w-max flex-nowrap gap-6 animate-marquee-right" id="marquee-row-2">
-            {/* Duplicated once for seamless endless scroll */}
-            {[...row2Cards, ...row2Cards].map((card, idx) => (
-              <div 
-                key={`row2-${idx}`}
-                onClick={() => onCardClick?.(card.id)}
-                className="w-[280px] sm:w-[320px] shrink-0 bg-white rounded-3xl overflow-hidden border border-emerald-100 hover:border-[#05461a]/40 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-[1.01] cursor-pointer flex flex-col text-left group"
-              >
-                {/* Image slot */}
-                <div className="h-[180px] sm:h-[196px] w-full overflow-hidden relative">
-                  <img 
-                    src={card.image} 
-                    alt={card.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    referrerPolicy="no-referrer"
-                    loading="lazy"
-                  />
-                  <div className="absolute top-3 left-3 bg-[#05461a] text-white border border-white/10 backdrop-blur-sm px-3 py-1 rounded-md text-[9px] font-sans font-black tracking-widest uppercase shadow-sm">
-                    {card.district}
+            <div className="flex w-max flex-nowrap gap-6 animate-marquee-left" id="marquee-row-1">
+              {/* Duplicated once for seamless endless scroll */}
+              {[...row1Cards, ...row1Cards].map((card, idx) => (
+                <div 
+                  key={`row1-${idx}`}
+                  onClick={() => onCardClick?.(card.id)}
+                  className="w-[280px] sm:w-[320px] shrink-0 p-[12px] rounded-none bg-gradient-to-br from-[#5c3a21] via-[#2c1a0e] to-[#422512] shadow-[inset_2px_2px_4px_rgba(255,255,255,0.15),inset_-2px_-2px_4px_rgba(0,0,0,0.6),6px_6px_20px_rgba(0,0,0,0.65)] hover:shadow-[inset_2px_2px_4px_rgba(255,255,255,0.2),inset_-2px_-2px_4px_rgba(0,0,0,0.7),12px_12px_30px_rgba(0,0,0,0.85)] border border-[#1b0e06] transition-all duration-300 transform hover:scale-[1.03] cursor-pointer flex flex-col text-left group relative"
+                >
+                  {/* Gold/brass fillet inset inlay line */}
+                  <div className="absolute inset-[3px] border border-[#bc923a]/40 pointer-events-none z-10" />
+                  
+                  {/* Antique mat board inner insert */}
+                  <div className="flex-1 bg-[#f4ebd0] p-4 flex flex-col border border-[#1b0e06]/60 z-10 relative shadow-[inset_1px_1px_3px_rgba(0,0,0,0.3)]">
+                    {/* Image slot */}
+                    <div className="h-[160px] sm:h-[176px] w-full overflow-hidden relative border border-[#2c1a0e]/30 mb-4">
+                      <img 
+                        src={card.image} 
+                        alt={card.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter sepia-[0.1] contrast-[1.05]"
+                        referrerPolicy="no-referrer"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-3 left-3 bg-[#2c1a0e] text-[#f4ebd0] border border-[#bc923a]/60 px-3 py-1 rounded-none text-[9px] font-jakarta font-bold tracking-widest uppercase shadow-sm">
+                        {card.district}
+                      </div>
+                    </div>
+
+                    {/* Content area */}
+                    <div className="flex-1 flex flex-col justify-between text-[#2c1a0e]">
+                      <div>
+                        <span className="text-[10px] sm:text-[11px] font-jakarta font-bold tracking-widest text-[#845f20] uppercase block mb-1.5">
+                          {card.category}
+                        </span>
+                        <h4 className="font-jakarta font-bold text-lg text-[#2c1a0e] group-hover:text-[#845f20] transition-colors leading-snug">
+                           {card.title}
+                        </h4>
+                        <p className="text-[#4e3922] text-xs sm:text-sm leading-relaxed mt-2.5 line-clamp-3 font-medium font-comic">
+                          {card.desc}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-
-                {/* Content area */}
-                <div className="p-6 flex-1 flex flex-col justify-between text-[#05461a]">
-                  <div>
-                    <span className="text-[10px] sm:text-[11px] font-sans font-black tracking-widest text-[#2E7D32]/70 uppercase block mb-1.5">
-                      {card.category}
-                    </span>
-                    <h4 className="font-sans font-black text-lg text-[#05461a] group-hover:text-[#2E7D32] transition-colors leading-snug">
-                      {card.title}
-                    </h4>
-                    <p className="text-[#2E7D32]/80 text-xs sm:text-sm leading-relaxed mt-2.5 line-clamp-3 font-medium font-sans">
-                      {card.desc}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
 
+          {/* Row 2: Scrolling Right */}
+          <div className="w-full overflow-hidden relative py-2" id="marquee-row-2-wrapper">
+
+            <div className="flex w-max flex-nowrap gap-6 animate-marquee-right" id="marquee-row-2">
+              {/* Duplicated once for seamless endless scroll */}
+              {[...row2Cards, ...row2Cards].map((card, idx) => (
+                <div 
+                  key={`row2-${idx}`}
+                  onClick={() => onCardClick?.(card.id)}
+                  className="w-[280px] sm:w-[320px] shrink-0 p-[12px] rounded-none bg-gradient-to-br from-[#5c3a21] via-[#2c1a0e] to-[#422512] shadow-[inset_2px_2px_4px_rgba(255,255,255,0.15),inset_-2px_-2px_4px_rgba(0,0,0,0.6),6px_6px_20px_rgba(0,0,0,0.65)] hover:shadow-[inset_2px_2px_4px_rgba(255,255,255,0.2),inset_-2px_-2px_4px_rgba(0,0,0,0.7),12px_12px_30px_rgba(0,0,0,0.85)] border border-[#1b0e06] transition-all duration-300 transform hover:scale-[1.03] cursor-pointer flex flex-col text-left group relative"
+                >
+                  {/* Gold/brass fillet inset inlay line */}
+                  <div className="absolute inset-[3px] border border-[#bc923a]/40 pointer-events-none z-10" />
+                  
+                  {/* Antique mat board inner insert */}
+                  <div className="flex-1 bg-[#f4ebd0] p-4 flex flex-col border border-[#1b0e06]/60 z-10 relative shadow-[inset_1px_1px_3px_rgba(0,0,0,0.3)]">
+                    {/* Image slot */}
+                    <div className="h-[160px] sm:h-[176px] w-full overflow-hidden relative border border-[#2c1a0e]/30 mb-4">
+                      <img 
+                        src={card.image} 
+                        alt={card.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter sepia-[0.1] contrast-[1.05]"
+                        referrerPolicy="no-referrer"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-3 left-3 bg-[#2c1a0e] text-[#f4ebd0] border border-[#bc923a]/60 px-3 py-1 rounded-none text-[9px] font-jakarta font-bold tracking-widest uppercase shadow-sm">
+                        {card.district}
+                      </div>
+                    </div>
+
+                    {/* Content area */}
+                    <div className="flex-1 flex flex-col justify-between text-[#2c1a0e]">
+                      <div>
+                        <span className="text-[10px] sm:text-[11px] font-jakarta font-bold tracking-widest text-[#845f20] uppercase block mb-1.5">
+                          {card.category}
+                        </span>
+                        <h4 className="font-jakarta font-bold text-lg text-[#2c1a0e] group-hover:text-[#845f20] transition-colors leading-snug">
+                          {card.title}
+                        </h4>
+                        <p className="text-[#4e3922] text-xs sm:text-sm leading-relaxed mt-2.5 line-clamp-3 font-medium font-comic">
+                          {card.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   );
